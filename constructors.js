@@ -9,12 +9,23 @@
  * @property {number} cost
  * @property {string} description
  */
+function Spell ( name, cost, description ) {
+   
+   //param properties
+   this.name = name;
+   this.cost = cost;
+   this.description = description;
 
+}
   /**
    * Print out all spell details and format it nicely.
    * The format doesnt matter, as long as it contains the spell name, cost, and description.
    * @name printDetails
    */
+
+Spell.prototype.printDetails = function( ) {
+   console.log("All the things" + "name: " + this.name + "cost: " + this.cost + "description: " + this.description);
+};
 
 /**
  * A spell that deals damage.
