@@ -101,7 +101,6 @@ Spellcaster.prototype.inflictDamage = function( damage ){
    }
 };
 
-
   /**
    * Reduces the spellcaster's mana by `cost`.
    * Mana should only be reduced only if there is enough mana to spend.
@@ -110,6 +109,19 @@ Spellcaster.prototype.inflictDamage = function( damage ){
    * @param  {number} cost      The amount of mana to spend.
    * @return {boolean} success  Whether mana was successfully spent.
    */
+Spellcaster.prototype.spendMana = function( cost ){
+   
+
+   if (this.mana >= cost){
+      this.mana = this.mana - cost;
+      return true;
+   } else {
+
+      return false;
+   }
+
+};
+
 
   /**
    * Allows the spellcaster to cast spells.
