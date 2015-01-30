@@ -77,7 +77,12 @@ DamageSpell.prototype = Object.create(Spell.prototype, {
  * @property {mana} mana
  * @property {boolean} isAlive  Default value should be `true`.
  */
-
+function Spellcaster (name, health, mana){
+   this.name = name;
+   this.health = health;
+   this.mana = mana;
+   this.isAlive = true;
+}
   /**
    * The spellcaster loses health equal to `damage`.
    * Health should never be negative.
