@@ -52,6 +52,18 @@ Spell.prototype.printDetails = function( ) {
  * @property {string} description
  */
 
+function DamageSpell ( name, cost, damage, description ){
+   this.damage = damage;
+
+   Spell.call(this, name, cost, description);
+}
+
+DamageSpell.prototype = Object.create(Spell.prototype, {
+   constructor : {
+      value : Spell
+   }  
+});
+
 /**
  * Now that you've created some spells, let's create
  * `Spellcaster` objects that can use them!
