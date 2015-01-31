@@ -146,7 +146,7 @@ Spellcaster.prototype.spendMana = function( cost ){
    */
 
 Spellcaster.prototype.invoke = function ( spell, target ) {
-   //Check if spell is either a Spell or DamageSpell
+  //Check if spell is either a Spell or DamageSpell
   if (spell === undefined || spell === null){
     return false;
   }
@@ -154,8 +154,6 @@ Spellcaster.prototype.invoke = function ( spell, target ) {
   if (spell instanceof DamageSpell && target instanceof Spellcaster){
     if (this.spendMana(spell.cost)){
       target.inflictDamage(spell.damage);
-    //if spell is casted and no target
-    //should invoke Spellcaster.spendmana(); if spell has been casted and mana has been spent
       return true;
     } else {
       return false;
