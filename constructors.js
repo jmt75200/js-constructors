@@ -110,16 +110,12 @@ Spellcaster.prototype.inflictDamage = function( damage ){
    * @return {boolean} success  Whether mana was successfully spent.
    */
 Spellcaster.prototype.spendMana = function( cost ){
-   
-
    if (this.mana >= cost){
       this.mana = this.mana - cost;
       return true;
    } else {
-
       return false;
    }
-
 };
 
 
@@ -148,3 +144,44 @@ Spellcaster.prototype.spendMana = function( cost ){
    * @param  {Spellcaster} target         The spell target to be inflicted.
    * @return {boolean}                    Whether the spell was successfully cast.
    */
+
+Spellcaster.prototype.invoke = function ( spell, target ) {
+   //Check if spell is either a Spell or DamageSpell
+  if (spell === undefined || spell === null){
+    return false;
+  }
+
+  if (spell instanceof DamageSpell && target instanceof Spellcaster){
+    if (this.spendMana(spell.cost)){
+      target.inflictDamage(spell.damage);
+    //if spell is casted and no target
+    //should invoke Spellcaster.spendmana(); if spell has been casted and mana has been spent
+      return true;
+    } else {
+      return false;
+    } 
+  } else if (spell instanceof DamageSpell && !(target instanceof Spellcaster)){
+    
+    return false;
+
+  } else if (spell instanceof Spell && !(spell instanceof DamageSpell) && !(target instanceof Spellcaster)){
+    
+    if (this.spendMana(spell.cost)){
+      return true;
+    } else {
+      return false;
+    }
+
+  }
+  
+};
+
+//spell instanceof Spell && !(target instanceof Spellcaster
+//target.inflictDamage(spell.damage);
+ // //if its a DamageSpell, target should be a parameter of Spellcaster : return true
+   // if (spell instanceof DamageSpell ){
+   // //if there is a target = inflinctDamage 
+   // //if it is a DamageSpell reduce target health by spell damage Spellcaster.inflictDamage
+   //    target.inflictDamage(spell.damage);
+   //    return true;
+   // }
